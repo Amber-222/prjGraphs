@@ -19,11 +19,26 @@
             //create friendships (edges)
             alice.addFriend(bob); //alce and bob are friends
             alice.addFriend(haylee); //alce and haylee are friends
-            bob.addFriend(diana); //bob and diana are friends
+            bob.addFriend(daniel); //bob and diana are friends
             diana.addFriend(haylee); //diana and haylee are friends
 
             //daniel has no friends
             myNetwork.printNetwork();
+
+            //finding shortest path from alice to daniel
+            Console.WriteLine("Fidning shortest path from Alice to Daniel ... ");
+            var path = myNetwork.getShortestPath(alice, daniel);
+
+            if (path != null)
+            {
+                //use join to display path nicely
+                Console.WriteLine($"Path found! It takes {path.Count - 1} steps");
+                Console.WriteLine(string.Join(" -> ", path.Select(p => p.name)));
+            }
+            else
+            {
+                Console.WriteLine("No path found between ALice and Daniel");
+            }
         }
     }
 }
